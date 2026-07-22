@@ -1,6 +1,17 @@
 (() => {
   'use strict';
 
+  try {
+    main();
+  } catch (err) {
+    document.documentElement.classList.add('js-off');
+    const loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+    console.error('Sacada Café script error:', err);
+  }
+
+  function main() {
+
   /* Loader */
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
@@ -9,6 +20,7 @@
 
   /* Header scroll state */
   const header = document.getElementById('siteHeader');
+  const backToTop = document.getElementById('backToTop');
   const onScroll = () => {
     header.classList.toggle('scrolled', window.scrollY > 40);
     backToTop.classList.toggle('show', window.scrollY > 600);
@@ -122,7 +134,6 @@
   });
 
   /* Back to top */
-  const backToTop = document.getElementById('backToTop');
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* Open/close status by time (Mon-Sat 08:00-19:00) */
@@ -140,5 +151,7 @@
   /* Footer year */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  }
 
 })();

@@ -254,6 +254,9 @@ section{ position:relative; padding:110px 0; }
 .reveal-up, .reveal-left, .reveal-right{
   opacity:0; transition: opacity .9s var(--ease), transform .9s var(--ease);
 }
+.js-off .reveal-up, .js-off .reveal-left, .js-off .reveal-right{
+  opacity:1 !important; transform:none !important;
+}
 .reveal-up{ transform: translateY(40px); }
 .reveal-left{ transform: translateX(-50px); }
 .reveal-right{ transform: translateX(50px); }
